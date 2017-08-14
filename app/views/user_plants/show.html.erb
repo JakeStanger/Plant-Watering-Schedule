@@ -1,0 +1,7 @@
+<h1><%= @user_plant.custom_name %></h1>
+<p><%= @user_plant.notes %></p>
+<p>Last watered <b><%= @user_plant.last_watered %></b></p>
+<hr>
+<%= link_to 'Delete', user_plant_path, method: :delete %>
+|
+<%= link_to 'Edit', edit_user_plant_path %>

@@ -1,0 +1,27 @@
+<h1><%= @user.username %>'s plants</h1>
+<div class="user_plants">
+  <div class="container">
+    <div class="row">
+      <% @user_plants.each do |p| %>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-image">
+                <img class="img-responsive" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg">
+                <span class="card-title"><%= p.custom_name %></span>
+              </div>
+
+              <div class="card-content">
+                <!--Title-->
+                <h5 class="card-title"><b><%= p.plant.name %></b></h5>
+              </div>
+
+              <div class="card-action">
+                <%= link_to 'More info', user_plant_path(p), class: 'btn' %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to 'Add plant', "/users/#{@user.id}/new", class: 'btn' %>

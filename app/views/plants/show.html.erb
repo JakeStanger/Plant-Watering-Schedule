@@ -1,0 +1,7 @@
+<h1><%= @plant.name %></h1>
+<p><%= @plant.description %> (<%= link_to 'More info', @plant.info_link %>)</p>
+<p>Requires watering every <b><%= @plant.watering_time %></b> days</p>
+<hr>
+<%= link_to 'Delete', plant_path, method: :delete %>
+|
+<%= link_to 'Edit', edit_plant_path %>
