@@ -7,6 +7,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css" type="text/css">-->
+    <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-year-calendar/1.1.1/css/bootstrap-year-calendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-year-calendar/1.1.1/js/bootstrap-year-calendar.min.js"></script>
   </head>
 
   <body>
@@ -43,7 +47,8 @@
         </ul>
         <ul class="nav navbar-nav navbar-right" align="right">
           <% if current_user %>
-              <li><%= link_to "Hello, #{current_user.username}", user_path(current_user) %></li>
+              <li class="navbar-text"><%= "Hello, #{current_user.username}" %></li>
+              <li><%= link_to 'Profile', user_path(current_user) %></li>
               <li><%= link_to 'Log out', logout_path, method: 'delete' %></li>
           <% else %>
               <li><%= link_to 'Login', 'login' %></a></li>

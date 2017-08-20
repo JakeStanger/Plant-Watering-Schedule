@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813005446) do
+ActiveRecord::Schema.define(version: 20170814205856) do
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_entries_on_plant_id"
+    t.index ["tag_id"], name: "index_entries_on_tag_id"
+  end
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
@@ -21,6 +30,12 @@ ActiveRecord::Schema.define(version: 20170813005446) do
     t.integer "winter_environment"
     t.text "description"
     t.string "info_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -25,3 +25,15 @@
   </div>
 </div>
 <%= link_to 'Add plant', "/users/#{@user.id}/new", class: 'btn' %>
+<br>
+<hr>
+<%= month_calendar(events: @user_plants) do |date, events| %>
+    <h4><%= date.mday %><% if events.length > 0 %> <span class="glyphicon glyphicon-leaf"></span><% end %></h4>
+
+    <% events.each do |plant| %>
+      <div>
+        <b><%= plant.custom_name %></b>
+        <%= plant.plant.name %>
+      </div>
+    <% end%>
+<% end %>

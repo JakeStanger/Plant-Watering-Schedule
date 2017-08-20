@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  root 'plants#index'
+
+  root 'tags#index'
+
+  # Tags
+  get 'tags' => 'tags#index'
+  get 'tags/new' => 'tags#new'
+  get 'tags/:id' => 'tags#show', as: :tag
+  post 'tags' => 'tags#create'
+  get 'tags/:id/edit' => 'tags#edit', as: :edit_tag
+  patch 'tags/:id' => 'tags#update'
+  delete 'tags/:id' => 'tags#destroy'
+  resources :tags
 
   # Base Plants
   get 'plants' => 'plants#index'

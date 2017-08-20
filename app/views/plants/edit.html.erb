@@ -1,4 +1,8 @@
-<!-- TODO Share with new.html.erb -->
+<script>
+    allTags = <%= raw all_tags.to_json %>;
+    currentTags = <%= raw tag_list.to_json %>;
+</script>
+
 <div class="col-md-4 col-md-offset-4">
   <h2>Editing: <%= @plant.name %></h2>
   <%= bootstrap_form_for(@plant) do |f| %>
@@ -10,7 +14,7 @@
   <br>
   <div class="field">
     <%= f.number_field :watering_time %>
-    <%= f.label :watering_time, 'Interval between watering in hours' %>
+    <%= f.label :watering_time, 'Days between watering' %>
   </div>
   <br>
   <div class="field">
@@ -22,6 +26,33 @@
   <div class="field">
     <%= f.text_area :description %>
     <%= f.text_field :info_link %>
+  </div>
+  <div class="field">
+    <%= f.text_field :tag_list, 'data-role'=>'tagsinput', id: 'tags' %>
+    <script>
+      var tagNames = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: allTags
+      });
+
+      var input = $('#tags');
+      input.tagsinput({
+          itemValue: 'id',
+          itemText: 'name',
+          maxTags: 3,
+          trimValue: true,
+          cancelConfirmKeysOnEmpty: true,
+          typeaheadjs: {
+              highlight: true,
+              name: 'tags',
+              display: 'name',
+              source: tagNames.ttAdapter()
+          }
+      });
+
+      for(var i in currentTags) input.tagsinput('add', currentTags[i]);
+    </script>
   </div>
   <div class="actions">
     <%= button_tag(type: 'submit', class: 'btn btn-success') do %>

@@ -1,6 +1,9 @@
 <h1><%= @plant.name %></h1>
 <p><%= @plant.description %> (<%= link_to 'More info', @plant.info_link %>)</p>
-<p>Requires watering every <b><%= @plant.watering_time %></b> days</p>
+<p>Requires watering every <b><%= @plant.watering_time %></b> day<%= @plant.watering_time > 1 ? 's' : '' %></p>
+<p>Tags: <% @tags.each do |t| %>
+      <%= link_to t.name, tag_path(t), class: 'btn btn-default' %>
+  <% end %></p>
 <hr>
 <%= link_to 'Delete', plant_path, method: :delete %>
 |

@@ -12,6 +12,10 @@ gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
+gem 'bootstrap-tagsinput-rails'
+
+# Calendar
+gem 'simple_calendar', '~> 2.0'
 
 # Jquery
 gem 'jquery-rails'

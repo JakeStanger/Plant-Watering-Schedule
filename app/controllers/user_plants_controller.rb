@@ -1,5 +1,6 @@
 class UserPlantsController < ApplicationController
-  before_action :require_user, only: %i[index show destroy]
+  before_action :require_user, only: %i[index show destroy new edit]
+
 
   def show
     @user_plant = UserPlant.find(params[:id])

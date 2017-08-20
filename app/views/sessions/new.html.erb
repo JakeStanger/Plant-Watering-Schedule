@@ -2,6 +2,7 @@
 	<%= bootstrap_form_for(:session, url: login_path) do |f| %>
 		<%= f.text_field :username, placeholder: 'Username' %>
 		<%= f.password_field :password, placeholder: 'Password' %>
-		<%= f.submit 'Log in' %>
+    <div class="row col-lg-12"><%= f.submit 'Log in' %>
+    <%= link_to 'Sign up', '/signup', class: 'btn btn-default' %></div>
 	<% end %>
 </div>
